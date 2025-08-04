@@ -1,4 +1,6 @@
 import click
+
+from create_sfz import generate_sfz
 from file_orginization import organize
 
 
@@ -11,8 +13,9 @@ def main(folder_path: str, starting_note:str="C", n_velocities: int=5):
     print("\nFinal mapping:")
     for group, mapping in file_mapping.items():
         print(group)
-        for file, note_name in mapping.items():
+        for note_name, file in mapping.items():
             print(f"{file}: {note_name}")
+    generate_sfz(file_mapping, n_velocities)
 
 
 if __name__ == "__main__":
