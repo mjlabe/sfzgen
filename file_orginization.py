@@ -32,10 +32,11 @@ def organize(folder_path: str, starting_note: str, n_velocities: int) -> dict[st
         note = notes[(n // n_velocities) % len(notes)]
         index = n % n_velocities
         ext = file.split(".")[-1]
-        shutil.copy(Path(folder_path, file), f"./soundfont/audio/{note}{octave}_{index}.{ext}")
+        index_reverse = (n_velocities - 1) - (n % n_velocities)
+        shutil.copy(Path(folder_path, file), f"./soundfont/audio/{note}{octave}_{index_reverse}.{ext}")
         if f"{note}{octave}" not in mapping:
             mapping[f"{note}{octave}"] = {}
-        mapping[f"{note}{octave}"][f"{note}{octave}_{index}"] = f"audio/{note}{octave}_{index}.{ext}"
+        mapping[f"{note}{octave}"][f"{note}{octave}_{index_reverse}"] = f"audio/{note}{octave}_{index_reverse}.{ext}"
         i += 1
         if note == "B" and index == n_velocities - 1:
             octave += 1
