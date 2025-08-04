@@ -22,7 +22,7 @@ def generate_regions(file_mapping: dict, n_samples: int, crossfade_percentage: i
             if sample_number >= n_samples - 1:
                 hivel = 127
             sfz.append(
-                f"<region>sample={sample_path} lovel={lovel} hilevel={hivel}"
+                f"<region>sample={sample_path} lovel={lovel} hivel={hivel}"
             )
             sample_number += 1
         midi_note += 1
